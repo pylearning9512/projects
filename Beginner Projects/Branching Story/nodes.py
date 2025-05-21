@@ -57,7 +57,9 @@ def node1_3():
     print("  ")    
 
 
-"""second branch"""def node1_2():
+"""second branch"""
+
+def node1_2():
        print("  ")
        print('The rain begins to fall, but your box stays mostly dry. A young couple taking shelter under an umbrella notices you. "Oh, the poor thing," the woman says.')
        print("  ")
