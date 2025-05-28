@@ -6,7 +6,7 @@ import re
 #"\d" is a digit, 
 # "{3}" and "{4}" is the number of digits in a row
 #""
-phone_num_regex = r'\d{3}-\d{3}-\d{4}'
+phone_num_regex = r'\d{3}-\S{3}-\S{4}'
 mo= re.compile(phone_num_regex)
 
 #example strings to search through
