@@ -1,0 +1,50 @@
+import requests
+import json
+
+base_url = "http://pokeapi.co/api/v2/"
+
+
+def pokedex():
+
+    def get_pokemon_info(name):
+        url= f"{base_url}/pokemon/{pkmn_name}"
+        response = requests.get(url)
+        if response.status_code==200:
+            pokemon_data=response.json()
+            return pokemon_data
+        else:
+            print("pokemon not found")
+
+    pkmn_name= input("enter pokemon here: ").casefold()
+    pkmn_info = get_pokemon_info(pkmn_name)
+        
+
+    def description():
+        desc_url= f"{base_url}/pokemon-species/{pkmn_info["id"]}/"
+        flavor_text = requests.get(desc_url)
+                
+        if flavor_text.status_code==200:
+            pkdx_entry = flavor_text.json()
+            print(f" description:  {pkdx_entry["flavor_text_entries"][0]["flavor_text"]}")
+        else:
+            print("Description not found")
+            
+
+    
+
+    if pkmn_info:
+        print(f"name: {pkmn_info["name"].capitalize()}")
+        print(f" ID: {pkmn_info["id"]}")
+        print(f"height:{(pkmn_info["height"])*10}cm")
+        print(f"weight: {(pkmn_info["weight"])/10} kg")
+    
+        description()
+    
+    
+    
+
+
+
+    
+
+pokedex()
