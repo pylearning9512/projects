@@ -30,7 +30,8 @@ def pokedex():
                 
         if flavor_text.status_code==200:
             pkdx_entry = flavor_text.json()
-            print(f" description:  {pkdx_entry["flavor_text_entries"][0]["flavor_text"]}")
+            clean_description = pkdx_entry["flavor_text_entries"][0]["flavor_text"].replace('\n', ' ').replace('\f', ' ')
+            print(f"\nDescription:\n{clean_description}")
         else:
             print("Description not found")
             
@@ -38,12 +39,14 @@ def pokedex():
     
 
     if pkmn_info:
-        print(f"name: {pkmn_info["name"].capitalize()}")
-        print(f" ID: {pkmn_info["id"]}")
+        print("----------------------------------------------")
+        print(f"\nname: {pkmn_info["name"].capitalize()}")
+        print(f"ID: {pkmn_info["id"]}")
         print(f"height:{(pkmn_info["height"])*10}cm")
         print(f"weight: {(pkmn_info["weight"])/10} kg")
     
         description()
+        print("----------------------------------------------")
     
     
     
